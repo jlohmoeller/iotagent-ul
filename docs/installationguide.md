@@ -165,8 +165,13 @@ JavaScript file, that contains the following sections:
 The `config.mqtt` section of the config file contains all the information needed to connect to the MQTT Broker from the
 IoT Agent. The following attributes are accepted:
 
+-   **protocol**: Protocol to use for broker connection: `mqtt` (default), `mqtts`, `tcp`, `tls`, `ws` or `wss`
 -   **host**: Host where the MQTT Broker is located.
 -   **port**: Port where the MQTT Broker is listening
+-   **ca**: PEM formatted CA certificate for validation of broker certificate (optional). By default, the certificate
+    store included in Node.js will be used.
+-   **cert**: client certificate (PEM format) used for authenticating against MQTT broker (optional)
+-   **key**: private key (PEM format) that belongs to the specified client certificate (optional)
 -   **username**: Username for the IoT Agent in the MQTT broker, if authentication is activated.
 -   **password**: Password for the IoT Agent in the MQTT broker, if authentication is activated.
 -   **qos**: QoS level: at most once (`0`), at least once (`1`), exactly once (`2`). (default is `0`).
@@ -205,8 +210,12 @@ The ones relating specific Ultralight 2.0 bindings are described in the followin
 
 | Environment variable | Configuration attribute |
 | :------------------- | :---------------------- |
+| IOTA_MQTT_PROTOCOL   | mqtt.protocol           |
 | IOTA_MQTT_HOST       | mqtt.host               |
 | IOTA_MQTT_PORT       | mqtt.port               |
+| IOTA_MQTT_CA         | mqtt.ca                 |
+| IOTA_MQTT_CERT       | mqtt.cert               |
+| IOTA_MQTT_KEY        | mqtt.key                |
 | IOTA_MQTT_USERNAME   | mqtt.username           |
 | IOTA_MQTT_PASSWORD   | mqtt.password           |
 | IOTA_MQTT_QOS        | mqtt.qos                |
